@@ -30,15 +30,15 @@ namespace Equilaterus.GitHubExtension
 				},
 				new IssueTrackerConfigurationParameter
 				{
-					Name = Globals.PROJECT_NAME,
-					Value = storedConfiguration.GetValidParameterValue(Globals.PROJECT_NAME, Globals.DEFAULT_PROJECT_NAME),
+					Name = Globals.PROJECT_OWNER,
+					Value = storedConfiguration.GetValidParameterValue(Globals.PROJECT_OWNER, Globals.DEFAULT_PROJECT_OWNER),
 					Type = IssueTrackerConfigurationParameterType.Text,
 					IsGlobal = false
 				},
 				new IssueTrackerConfigurationParameter
 				{
-					Name = Globals.PROJECT_OWNER,
-					Value = storedConfiguration.GetValidParameterValue(Globals.PROJECT_OWNER, Globals.DEFAULT_PROJECT_OWNER),
+					Name = Globals.PROJECT_NAME,
+					Value = storedConfiguration.GetValidParameterValue(Globals.PROJECT_NAME, Globals.DEFAULT_PROJECT_NAME),
 					Type = IssueTrackerConfigurationParameterType.Text,
 					IsGlobal = false
 				},
