@@ -12,6 +12,7 @@ namespace Equilaterus.GitHubExtension.Provider
 {
 	public class GitHubProvider : IGitHubProvider
 	{
+		static readonly ILog _log = LogManager.GetLogger("githubextension");
 		private readonly IssueTrackerConfiguration _configuration;
 		private readonly IGitHubHttpHelper _httpHelper;
 
@@ -24,26 +25,61 @@ namespace Equilaterus.GitHubExtension.Provider
 
 		public PlasticTask FindSingleTaskById(string taskId)
 		{
+			// Validate params
 			if (string.IsNullOrEmpty(taskId))
+			{
 				return null;
+			}
 
+			// Call API
 			var url = _configuration.GetApiUrlForSingleTask(taskId);
-			var apiResponse = _httpHelper.CallApi(url, $"token { _configuration.GetAuthToken() }");
+			if (!_httpHelper.TryCallApi(url, _configuration.GetAuthToken(), out var apiResponse))
+			{
+				return null;
+			}
 
-			return JsonConvert.DeserializeObject<GitHubIssue>(apiResponse)
-				.MapToPlasticTask();
+			// Process response
+			try
+			{
+				return apiResponse.DeserializeToGithubIssueSingle().MapToPlasticTask();
+			}
+			catch (Exception e)
+			{
+				LogException(e);
+				return null;
+			}
 		}
 
 		public List<PlasticTask> FindTasks(string assignee)
 		{
-			var url = _configuration.GetApiUrlForTasks(assignee);
-			var apiResponse = _httpHelper.CallApi(url, $"token { _configuration.GetAuthToken() }");
+			// Call API
+			var url = _configuration.GetApiUrlForTasks(assignee);	
+			if (!_httpHelper.TryCallApi(url, _configuration.GetAuthToken(), out var apiResponse))			
+			{
+				return new List<PlasticTask>();
+			}
 
-			return JsonConvert.DeserializeObject<GitHubIssue[]>(apiResponse)
-				.Select(issue => issue.MapToPlasticTask())
-				.ToList();
+			// Process response
+			try
+			{
+				return apiResponse.DeserializeToGithubIssues().MapToPlasticTasks();
+			}
+			catch (Exception e)
+			{
+				LogException(e);
+				return null;
+			}
 		}
 
+		public void TestConnection(IssueTrackerConfiguration byPassConfiguration)
+		{
+			var url = byPassConfiguration.GetApiUrlForTasks(null);
+			_httpHelper.CallApi(url, byPassConfiguration.GetAuthToken());
+		}
 
+		private void LogException(Exception e)
+		{
+			_log.Error($"Exception deserializing: { e.Message}. { e.StackTrace}.");
+		}
 	}
 }

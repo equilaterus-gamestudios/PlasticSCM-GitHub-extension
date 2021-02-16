@@ -8,5 +8,7 @@ namespace Equilaterus.GitHubExtension.Provider
 		PlasticTask FindSingleTaskById(string taskId);
 
 		List<PlasticTask> FindTasks(string assignee);
+
+		void TestConnection(IssueTrackerConfiguration byPassConfiguration);
 	}
 }
