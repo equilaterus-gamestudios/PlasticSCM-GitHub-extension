@@ -100,9 +100,12 @@ namespace Equilaterus.GitHubExtension
 
         public bool TestConnection(IssueTrackerConfiguration configuration)
         {
-			// TODO: do a real test connection
-            return true;
-        }
+			// This should throw an exception for a bad configuration
+			_provider.TestConnection(configuration);
+
+			// Otherwise succeded
+			return true;
+		}
 
         public void UpdateLinkedTasksToChangeset(PlasticChangeset changeset, List<string> tasks)
         {

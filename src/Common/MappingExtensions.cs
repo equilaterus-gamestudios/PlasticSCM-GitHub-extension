@@ -1,5 +1,6 @@
 using Codice.Client.IssueTracker;
 using Equilaterus.GitHubExtension.Provider;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,17 @@ namespace Equilaterus.GitHubExtension.Common
 				Status = "working" // TODO: Review possible values
 			};
 		}
+
+		public static List<PlasticTask> MapToPlasticTasks(this GitHubIssue[] issues)
+			=> issues
+				.Select(issue => issue.MapToPlasticTask())
+				.ToList();
+
+		public static GitHubIssue DeserializeToGithubIssueSingle(this string apiResponse)
+			=> JsonConvert.DeserializeObject<GitHubIssue>(apiResponse);
+
+		public static GitHubIssue[] DeserializeToGithubIssues(this string apiResponse)
+			=> JsonConvert.DeserializeObject<GitHubIssue[]>(apiResponse);
 
 		//
 		// Task naming mappings

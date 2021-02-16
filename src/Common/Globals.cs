@@ -13,17 +13,17 @@ namespace Equilaterus.GitHubExtension.Common
 		//
 
 		public const string BRANCH_PREFIX_KEY = "Branch prefix";
-		public const string USER_KEY = "User Email";
-		public const string PROJECT_OWNER = "Project Owner";
-		public const string PROJECT_NAME = "Project Name";
-		public const string AUTH_TOKEN = "AuthToken";
+		public const string USER_KEY = "Username";
+		public const string PROJECT_OWNER = "Project owner";
+		public const string PROJECT_NAME = "Project name";
+		public const string AUTH_TOKEN = "Authentication token";
 
 		//
 		// Default extension values
 		//
 
 		public const string DEFAULT_BRANCH_PREFIX_KEY = "task";
-		public const string DEFAULT_USER_KEY = "your@email.com";
+		public const string DEFAULT_USER_KEY = "githubusername";
 		public const string DEFAULT_PROJECT_OWNER = "project-owner";
 		public const string DEFAULT_PROJECT_NAME = "project-name";
 		public const string DEFAULT_AUTH_TOKEN = "";
