@@ -4,7 +4,7 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
 ## Installation
 
-1. Download the latest [release](https://github.com/equilaterus-gamestudios/PlasticSCM-GitHub-extension/releases), and extract the file contents inside the *client* folder of your PlasticSCM installation. Usually:
+1. Download the latest [release for Windows](https://github.com/equilaterus-gamestudios/PlasticSCM-GitHub-extension/releases) and extract the file contents inside the *client* folder of your PlasticSCM installation. Usually:
 
     ```
     C:\Program Files\PlasticSCM5\client
