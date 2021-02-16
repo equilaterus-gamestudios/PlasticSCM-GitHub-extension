@@ -18,9 +18,9 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
     * **User email**: Your email account associated with   GitHub.
     * **Branch Prefix**: By default we suggest *task*.
-    * **Project Name**: Repository name (see previous   image).
-    * **Project Owner**: User or organization account   that owns the repo (see previous image).
-    * **Auth Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new)   and create a *Personal token* with **repo** scope   (see next image).
+	* **Project owner**: User or organization account   that owns the repo (see previous image).
+    * **Project name**: Repository name (see previous image).
+    * **Authentication Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new)   and create a *Personal token* with **repo** scope   (see next image).
 
       ![PlasticSCM GitHub token](https://equilaterus.com/wikilaterus/assets/img/plasticscm/plasticscm-github-token.png)
 	  
