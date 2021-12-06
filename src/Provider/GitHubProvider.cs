@@ -71,6 +71,13 @@ namespace Equilaterus.GitHubExtension.Provider
 			}
 		}
 
+		public bool AddTaskComment(string taskId, string message)
+		{
+			// Call API
+			var url = _configuration.GetApiUrlForTaskCommenting(taskId);
+			return _httpHelper.TryCallApi(url, _configuration.GetAuthToken(), out _, "POST", $"{{\"body\": \"{ message }\"}}");
+		}
+
 		public void TestConnection(IssueTrackerConfiguration byPassConfiguration)
 		{
 			var url = byPassConfiguration.GetApiUrlForTasks(null);
