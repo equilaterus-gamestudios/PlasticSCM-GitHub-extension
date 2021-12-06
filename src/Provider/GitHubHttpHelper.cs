@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Threading.Tasks;
+using System.Text;
+using Equilaterus.GitHubExtension.Common;
 
 namespace Equilaterus.GitHubExtension.Provider
 {
@@ -13,17 +15,27 @@ namespace Equilaterus.GitHubExtension.Provider
 	{
 		static readonly ILog _log = LogManager.GetLogger("githubextension");
 
-		public string CallApi(string targetUrl, string token)
+		public string CallApi(string targetUrl, string token, string method = "GET", string body = null)
 		{
 			var request = (HttpWebRequest)WebRequest.Create(targetUrl);
-			request.Method = "GET";
-			request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
-			request.Accept = "application/vnd.github.v3+json";
+			request.Method = method;
+			request.UserAgent = Globals.API_USER_AGENT;
+			request.Accept = Globals.API_ACCEPT;
 			if (!string.IsNullOrEmpty(token))
 			{
 				request.Headers.Add("Authorization", $"token { token }");
 			}
 
+			if (!string.IsNullOrEmpty(body))
+			{
+				var bodyData = Encoding.Default.GetBytes(body);
+				request.ContentLength = bodyData.Length;
+
+				using (var requestBody = request.GetRequestStream())
+				{
+					requestBody.Write(bodyData, 0, bodyData.Length);
+				}
+			}
 			
 			using (var resp = (HttpWebResponse)request.GetResponse())
 			using (var reader = new StreamReader(resp.GetResponseStream()))
@@ -32,11 +44,11 @@ namespace Equilaterus.GitHubExtension.Provider
 			}		
 		}
 
-		public bool TryCallApi(string targetUrl, string token, out string apiResponse)
+		public bool TryCallApi(string targetUrl, string token, out string apiResponse, string method = "GET", string body = null)
 		{
 			try
 			{
-				apiResponse = CallApi(targetUrl, token);
+				apiResponse = CallApi(targetUrl, token, method, body);
 				return true;
 			}
 			catch (Exception e)
