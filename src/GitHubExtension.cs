@@ -85,7 +85,11 @@ namespace Equilaterus.GitHubExtension
 
         public void LogCheckinResult(PlasticChangeset changeset, List<PlasticTask> tasks)
         {
-            // Not supported
+			foreach (var task in tasks)
+			{
+				_provider.AddTaskComment(task.Id, 
+					$"Linked with changeset [{ changeset.Id }]({ _configuration.GetPlasticChangesetURL(changeset) }): *{ changeset.Comment }*.");
+			}
         }
 
         public void MarkTaskAsOpen(string taskId, string assignee)
