@@ -21,7 +21,7 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 	* **Project owner**: User or organization account   that owns the repo (see previous image).
     * **Project name**: Repository name (see previous image).
     * **Authentication Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new)   and create a *Personal token* with **repo** and **write:discussion** scopes.
-	* **Plastic WebUI**: Customize the url to point to the correct path for your PlasticSCM web UI. Finally, when doing a check-in, you can link a changeset with a Github Issue (given its number ID):
+	* **Plastic WebUI**: Customize the url. Finally, when doing a check-in, you can link your PlasticSCM changeset with a Github Issue (given its number ID):
 
 	  ![PlasticSCM GitHub issues link](_docs/changeset-link-task.png)
 
