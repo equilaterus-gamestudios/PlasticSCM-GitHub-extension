@@ -48,6 +48,13 @@ namespace Equilaterus.GitHubExtension
 					Value = storedConfiguration.GetValidParameterValue(Globals.AUTH_TOKEN, Globals.DEFAULT_AUTH_TOKEN),
 					Type = IssueTrackerConfigurationParameterType.Text,
 					IsGlobal = false
+				},
+				new IssueTrackerConfigurationParameter
+				{
+					Name = Globals.PLASTIC_WEBUI_URL,
+					Value = storedConfiguration.GetValidParameterValue(Globals.PLASTIC_WEBUI_URL, Globals.DEFAULT_PLASTIC_WEBUI_URL),
+					Type = IssueTrackerConfigurationParameterType.Text,
+					IsGlobal = false
 				}
 			};
 
