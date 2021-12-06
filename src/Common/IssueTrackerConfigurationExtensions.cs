@@ -28,6 +28,9 @@ namespace Equilaterus.GitHubExtension.Common
 		public static string GetAuthToken(this IssueTrackerConfiguration configuration)
 			=> configuration.GetValue(Globals.AUTH_TOKEN);
 
+		public static string GetPlasticWebURL(this IssueTrackerConfiguration configuration)
+			=> configuration.GetValue(Globals.PLASTIC_WEBUI_URL);
+
 
 		//
 		// URL Helpers
@@ -44,6 +47,9 @@ namespace Equilaterus.GitHubExtension.Common
 			return $"{ configuration.GetApiUrl() }/issues?{ assigneeFilter }state=open";
 		}
 
+		public static string GetApiUrlForTaskCommenting(this IssueTrackerConfiguration configuration, string taskId)
+			=> $"{ configuration.GetApiUrl() }/issues/{ taskId }/comments";
+
 		public static string GetApiUrlForSingleTask(this IssueTrackerConfiguration configuration, string taskId)
 			=> $"{ configuration.GetApiUrl() }/issues/{ taskId }";
 		
@@ -59,6 +65,14 @@ namespace Equilaterus.GitHubExtension.Common
 		public static string GetUrl(this IssueTrackerConfiguration configuration)
 			=> $"{ Globals.GITHUB_URL }{ configuration.GetProjectOwner() }/{ configuration.GetProjectName() }";
 
+		public static string GetPlasticChangesetURL(this IssueTrackerConfiguration configuration, PlasticChangeset changeset)
+		{
+			var customUrl = configuration.GetPlasticWebURL()?.Trim();			
+			if (!string.IsNullOrEmpty(customUrl))
+				return $"{ configuration.GetPlasticWebURL().Trim() }{ changeset.Id }";
+
+			return string.Empty;
+		}
 
 		//
 		// Misc
