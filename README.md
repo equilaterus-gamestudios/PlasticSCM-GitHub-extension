@@ -12,7 +12,7 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
 2. Run PlasticSCM, go to *Preferences* -> *Issue trackers*. You should see on the dropdown *GitHub Extension*.
 
-    ![PlasticSCM GitHub issues integration](https://equilaterus.com/wikilaterus/assets/img/plasticscm/plasticscm-github-extension.png)
+    ![PlasticSCM GitHub issues integration](_docs/basic-configuration.png)
 
     Configure the extension:
 
@@ -20,10 +20,10 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
     * **Branch Prefix**: By default we suggest *task*.
 	* **Project owner**: User or organization account   that owns the repo (see previous image).
     * **Project name**: Repository name (see previous image).
-    * **Authentication Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new)   and create a *Personal token* with **repo** scope   (see next image).
+    * **Authentication Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new)   and create a *Personal token* with **repo** and **write:discussion** scopes.
+	* **Plastic WebUI**: Customize the url to point to the correct path for your PlasticSCM web UI. Finally, when doing a check-in, you can link a changeset with a Github Issue (given its number ID):
 
-      ![PlasticSCM GitHub token](https://equilaterus.com/wikilaterus/assets/img/plasticscm/plasticscm-github-token.png)
-	  
+	  ![PlasticSCM GitHub issues link](_docs/changeset-link-task.png)
 
 
 ## Build
@@ -46,8 +46,8 @@ In case that your PlasticSCM installation is not located on *C:\Program Files\Pl
 
 Finally, you'll need to double check that *Output Path* and  *Start External program* are configured to run *PlasticSCM*, see the following images:
 
-![Visual Studio configuration](https://equilaterus.com/wikilaterus/assets/img/plasticscm/github-extension-visualstudio.png)
+![Visual Studio configuration](_docs/debug-1.png)
 
-![Visual Studio configuration](https://equilaterus.com/wikilaterus/assets/img/plasticscm/github-extension-visualstudio-2.png)
+![Visual Studio configuration](_docs/debug-2.png)
 
 For more information: [See PlasticSCM documentation](https://www.plasticscm.com/documentation/extensions/plastic-scm-version-control-task-and-issue-tracking-guide#WritingPlasticSCMcustomextensions).
