@@ -1,4 +1,5 @@
 using Codice.Client.IssueTracker;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,37 @@ namespace Equilaterus.GitHubExtension.Common
 		public static string GetPlasticWebURL(this IssueTrackerConfiguration configuration)
 			=> configuration.GetValue(Globals.PLASTIC_WEBUI_URL);
 
+		public static int GetTimeout(this IssueTrackerConfiguration configuration, ILog log)
+		{
+			var timeoutStr = configuration.GetValue(Globals.TIMEOUT);
+
+			int timeout;
+			if (int.TryParse(timeoutStr, out timeout))
+			{
+				return timeout;
+			}
+			else 
+			{
+				log.ErrorFormat("Configuration error: 'Timeout: {0}' is not an integer. Using default value (100).", timeoutStr);
+				return 100;
+			}
+		}
+
+		public static bool GetLinux(this IssueTrackerConfiguration configuration, ILog log)
+		{
+			var linuxStr = configuration.GetValue(Globals.LINUX);
+
+			bool linux;
+			if (bool.TryParse(linuxStr, out linux))
+			{
+				return linux;
+			}
+			else
+			{
+				log.ErrorFormat("Configuration error: 'Linux: {0}' is not a boolean. Using default value (false).", linux);
+				return false;
+			}
+		}
 
 		//
 		// URL Helpers
@@ -56,7 +88,7 @@ namespace Equilaterus.GitHubExtension.Common
 		public static string GetApiUrl(this IssueTrackerConfiguration configuration)
 			=> $"{ Globals.GITHUB_API }{ configuration.GetProjectOwner() }/{ configuration.GetProjectName() }";
 
-		
+				
 		// Browsing Urls
 
 		public static string GetUrlForTask(this IssueTrackerConfiguration configuration, string taskId)
