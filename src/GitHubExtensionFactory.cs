@@ -55,7 +55,21 @@ namespace Equilaterus.GitHubExtension
 					Value = storedConfiguration.GetValidParameterValue(Globals.PLASTIC_WEBUI_URL, Globals.DEFAULT_PLASTIC_WEBUI_URL),
 					Type = IssueTrackerConfigurationParameterType.Text,
 					IsGlobal = false
-				}
+				},
+				new IssueTrackerConfigurationParameter
+				{
+					Name = Globals.TIMEOUT,
+					Value = storedConfiguration.GetValidParameterValue(Globals.TIMEOUT, Globals.DEFAULT_TIMEOUT),
+					Type = IssueTrackerConfigurationParameterType.Text,
+					IsGlobal = false
+				},
+				new IssueTrackerConfigurationParameter
+				{
+					Name = Globals.LINUX,
+					Value = storedConfiguration.GetValidParameterValue(Globals.LINUX, Globals.DEFAULT_LINUX),
+					Type = IssueTrackerConfigurationParameterType.Boolean,
+					IsGlobal = false
+				},
 			};
 
 			//

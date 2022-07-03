@@ -40,7 +40,7 @@
       <HintPath>C:\Program Files\PlasticSCM5\client\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\Program Files\PlasticSCM5\client\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BashUtils.cs" />
     <Compile Include="Common\Globals.cs" />
     <Compile Include="Common\IssueTrackerConfigurationExtensions.cs" />
     <Compile Include="Provider\GitHubProvider.cs" />
