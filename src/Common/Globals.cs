@@ -18,6 +18,8 @@ namespace Equilaterus.GitHubExtension.Common
 		public const string PROJECT_NAME = "Project name";
 		public const string AUTH_TOKEN = "Authentication token";
 		public const string PLASTIC_WEBUI_URL = "Plastic Web UI";
+		public const string TIMEOUT = "Timeout";
+		public const string LINUX = "Linux";
 
 		//
 		// Default extension values
@@ -29,6 +31,8 @@ namespace Equilaterus.GitHubExtension.Common
 		public const string DEFAULT_PROJECT_NAME = "project-name";
 		public const string DEFAULT_AUTH_TOKEN = "";
 		public const string DEFAULT_PLASTIC_WEBUI_URL = "https://www.plasticscm.com/orgs/YOUR_ORG/repos/YOUR_REPO/diff/changeset/";
+		public const string DEFAULT_TIMEOUT = "100";
+		public const string DEFAULT_LINUX = "false";
 
 		//
 		// Services URLs
