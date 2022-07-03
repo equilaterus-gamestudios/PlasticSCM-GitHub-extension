@@ -6,12 +6,12 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
 ### Extension Parameters
 
-* **User email**: Your email account associated with GitHub.
-* **Branch Prefix**: By default we suggest *task*.
+* **User email**: Your email account that is associated with GitHub.
+* **Branch Prefix**: By default, we suggest "*task*".
 * **Project owner**: User or organization account that owns the repository.
 * **Project name**: Repository name.
-* **Authentication Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new)   and create a *Personal token* with **repo** and **write:discussion** scopes.
-* **Plastic WebUI**: Customize the URL. After doing a commit on Plastic the GitHub issue is going to a have a comment linked with the commit using the provided URL.
+* **Authentication Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new) and create a *Personal token* with **repo** and **write:discussion** scopes.
+* **Plastic WebUI**: Customize the URL. After doing a commit on Plastic the GitHub issue will have a comment linked with the commit using the provided URL.
 
 	```
 	https://www.plasticscm.com/orgs/YOUR_ORG/repos/YOUR_REPO/diff/changeset/
@@ -103,9 +103,9 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
 ## Build
 
-*Windows only*: If you want to Build Locally this project, clone this repo and open the solution with [Visual Studio](https://visualstudio.microsoft.com/es/) as an **Administrator user**.
+*Windows only*: If you want to Build this project locally, clone this repo and open the solution with [Visual Studio](https://visualstudio.microsoft.com/es/) as an **Administrator user**.
 
-To see the extension on the dropdown, you'll first need to modify the file **customextensions.conf**, located on your PlasticSCM installation folder, inside **client** directory.
+To see the extension on the dropdown, you'll first need to modify the file **customextensions.conf**, located in your PlasticSCM installation folder, inside **/client** directory.
 
 ```
 C:\Program Files\PlasticSCM5\client\customextensions.conf
@@ -126,3 +126,5 @@ Finally, you'll need to double check that *Output Path* and  *Start External pro
 ![Visual Studio configuration](_docs/debug-2.png)
 
 For more information: [See PlasticSCM documentation](https://www.plasticscm.com/documentation/extensions/plastic-scm-version-control-task-and-issue-tracking-guide#WritingPlasticSCMcustomextensions).
+
+This project is developed and maintained by [Equilaterus](https://www.equilaterussoftworks.com/).
