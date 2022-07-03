@@ -4,7 +4,7 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
 ## Installation
 
-### Extenstion Parameters
+### Extension Parameters
 
 * **User email**: Your email account associated with GitHub.
 * **Branch Prefix**: By default we suggest *task*.
