@@ -11,10 +11,12 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 * **Project owner**: User or organization account that owns the repository.
 * **Project name**: Repository name.
 * **Authentication Token**: Go to [https://github.com/settings/  tokens/new](https://github.com/settings/tokens/new)   and create a *Personal token* with **repo** and **write:discussion** scopes.
-* **Plastic WebUI**: Customize the url:	   
+* **Plastic WebUI**: Customize the URL. After doing a commit on Plastic the GitHub issue is going to a have a comment linked with the commit using the provided URL.
+
 	```
 	https://www.plasticscm.com/orgs/YOUR_ORG/repos/YOUR_REPO/diff/changeset/
 	```
+	
 * **Timeout**: Timeout in seconds, by default 100.
 * **Linux**: true or false, enables or disables **Linux support**.
 
@@ -42,7 +44,7 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
    Example: **$HOME/.plastic4/issuetrackers/myaccount@cloud/allrepos**
 
-4. Create a file **github.conf** inside the folders that you created under step 3. For example: **$HOME/.plastic4/issuetrackers/myaccount@cloud/allrepos/github.conf**. Customize the configuration by changing the values inside *{}* according to your requirements (remove the characters *{* and *}*):
+4. Create a file **github.conf** inside the folders that you've created under step 3. For example: **$HOME/.plastic4/issuetrackers/myaccount@cloud/allrepos/github.conf**. Customize the configuration by changing the values inside *{}* according to your requirements (remove the characters *{* and *}*):
 
    	```
 	WorkingMode={TaskOnChangeset OR TaskOnBranch}
@@ -72,9 +74,9 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 	Name=Linux;Value=true;Type=Boolean;IsGlobal=False
    	```
 
-	For more information see **Extension Parameters** at the start of this README.
+	For more information see **Extension Parameters** at the top of this file.
 
-5.  Finally, when doing a check-in, you can link your PlasticSCM changeset with a Github Issue.
+5.  Finally, when doing a check-in, you can link your PlasticSCM changeset with a Github Issue (if using **WorkingMode=TaskOnChangeset**, otherwise you'll do it via-branching).
 
 	![PlasticSCM GitHub issues integration on Linux](_docs/linux.png)
 
@@ -92,9 +94,9 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 
     ![PlasticSCM GitHub issues integration](_docs/basic-configuration.png)
 
-    Configure the extension. For more information see **Extension Parameters** at the start of this README.
+    Select a **Working Mode** from the dropdown and configure the extension. For more information see **Extension Parameters** at the top of this file.
 
-3. Finally, when doing a check-in, you can link your PlasticSCM changeset with a Github Issue (given its number ID):
+3. Finally, when doing a check-in, you can link your PlasticSCM changeset with a Github Issue (if using **WorkingMode=TaskOnChangeset**, otherwise you'll do it via-branching):
 
 ![PlasticSCM GitHub issues link](_docs/changeset-link-task.png)
 
@@ -115,7 +117,7 @@ Add the following line:
 GitHub Extension=GitHubExtension.dll
 ```
 
-In case that your PlasticSCM installation is not located on *C:\Program Files\PlasticSCM5\client*, additionally, you need to open on your text editor the file **src/GitHubExtension.csproj** (not the *.sln*!) and replace *C:\Program Files\PlasticSCM5\client* with your installation path (it appears 3 times: issuetrackerinterface.dll, log4net.dll and the OutputPath).
+In case that your PlasticSCM installation is not located on *C:\Program Files\PlasticSCM5\client*, additionally, you need to open on your text editor the file **src/GitHubExtension.csproj** (not the *.sln*!) and replace *C:\Program Files\PlasticSCM5\client* with your installation path (it appears multiple times).
 
 Finally, you'll need to double check that *Output Path* and  *Start External program* are configured to run *PlasticSCM*, see the following images:
 
