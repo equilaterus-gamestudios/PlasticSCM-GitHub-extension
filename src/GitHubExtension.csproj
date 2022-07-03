@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BashUtils.cs" />
     <Compile Include="Common\Globals.cs" />
     <Compile Include="Common\IssueTrackerConfigurationExtensions.cs" />
     <Compile Include="Provider\GitHubProvider.cs" />
