@@ -99,9 +99,9 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 ![PlasticSCM GitHub issues link](_docs/changeset-link-task.png)
 
 
-## Build (only Windows)
+## Build
 
-If you want to Build Locally this project, clone this repo and open the solution with [Visual Studio](https://visualstudio.microsoft.com/es/) as an **Administrator user**.
+*Windows only*: If you want to Build Locally this project, clone this repo and open the solution with [Visual Studio](https://visualstudio.microsoft.com/es/) as an **Administrator user**.
 
 To see the extension on the dropdown, you'll first need to modify the file **customextensions.conf**, located on your PlasticSCM installation folder, inside **client** directory.
 
