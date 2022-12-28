@@ -20,85 +20,35 @@ Integrate PlasticSCM with GitHub. Access your issues directly from Plastic!
 * **Timeout**: Timeout in seconds, by default 100.
 * **Linux**: true or false, enables or disables **Linux support**.
 
-### Linux
+### Installation
 
-1. Download the latest [release](https://github.com/equilaterus-gamestudios/PlasticSCM-GitHub-extension/releases) and extract file contents inside the *client* folder of your PlasticSCM installation. Usually:
+Download the latest [release](https://github.com/equilaterus-gamestudios/PlasticSCM-GitHub-extension/releases) and extract file contents inside the *client* folder of your PlasticSCM installation. Usually:
 
-    ```
-    /opt/plasticscm5/client/
-    ```
+* Linux:
 
-2. Open **$HOME/.plastic4/client.conf** and add the following line before closing the **ClientConfigData** tag of the XML contents:
+  ```
+  /opt/plasticscm5/client/
+  ```
 
-  	```xml
-  	<!-- Add this line -->
-	<Extensions><Extension AssemblyFile="/opt/plasticscm5/client/GitHubExtension.dll" /></Extensions>
-	<!-- Before closing  ClientConfigData -->
-	</ClientConfigData>
-	```
+* Windows:
 
-3. Create the structure **issuetrackers/SERVER_PORT/REPOSITORY** under **$HOME/.plastic4/**.
+  ```
+  C:\Program Files\PlasticSCM5\client
+  ```
 
-   * **SERVER_PORT**: Server port or *YOUR_SERVER@cloud* for cloud servers.
-   * **REPOSITORY**: Name of the repository or **allrepos**.
+### Configuration
 
-   Example: **$HOME/.plastic4/issuetrackers/myaccount@cloud/allrepos**
+> Note: UI may look a little bit different on newer versions of PlasticSCM but steps are the same.
 
-4. Create a file **github.conf** inside the folders that you've created under step 3. For example: **$HOME/.plastic4/issuetrackers/myaccount@cloud/allrepos/github.conf**. Customize the configuration by changing the values inside *{}* according to your requirements (remove the characters *{* and *}*):
-
-   	```
-	WorkingMode={TaskOnChangeset OR TaskOnBranch}
-
-	Name=Username;Value={username};Type=User;IsGlobal=False
-	Name=Branch prefix;Value={task};Type=BranchPrefix;IsGlobal=True
-	Name=Project owner;Value={owner};Type=Text;IsGlobal=False
-	Name=Project name;Value={project};Type=Text;IsGlobal=False
-	Name=Authentication token;Value={token};Type=Text;IsGlobal=False
-	Name=Plastic Web UI;Value={https%3A%2F%2Fwww.plasticscm.com%2Forgs%2FYOUR_ORG%2Frepos%2FYOUR_REPO%2Fdiff%2Fchangeset%2F};Type=Text;IsGlobal=False
-	Name=Timeout;Value={100};Type=Text;IsGlobal=False
-	Name=Linux;Value=true;Type=Boolean;IsGlobal=False
-   	```
-
-	For example:
-
-	```
-	WorkingMode=TaskOnChangeset
-
-	Name=Username;Value=my_github_user;Type=User;IsGlobal=False
-	Name=Branch prefix;Value=task;Type=BranchPrefix;IsGlobal=True
-	Name=Project owner;Value=repo_owner;Type=Text;IsGlobal=False
-	Name=Project name;Value=project;Type=Text;IsGlobal=False
-	Name=Authentication token;Value=GITHUBTOKENHERE;Type=Text;IsGlobal=False
-	Name=Plastic Web UI;Value=https%3A%2F%2Fwww.plasticscm.com%2Forgs%2Fmyorg%2Frepos%2Fproject%2Fdiff%2Fchangeset%2F;Type=Text;IsGlobal=False
-	Name=Timeout;Value=100;Type=Text;IsGlobal=False
-	Name=Linux;Value=true;Type=Boolean;IsGlobal=False
-   	```
-
-	For more information see **Extension Parameters** at the top of this file.
-
-5.  Finally, when doing a check-in, you can link your PlasticSCM changeset with a Github Issue (if using **WorkingMode=TaskOnChangeset**, otherwise you'll do it via-branching).
-
-	![PlasticSCM GitHub issues integration on Linux](_docs/linux.png)
-
-**NOTE**: You may need to use the Legacy GUI, just open PlasticSCM and go to the three dots on the top right corner of the window to switch back to the Legacy GUI.
-
-### Windows
-
-1. Download the latest [release](https://github.com/equilaterus-gamestudios/PlasticSCM-GitHub-extension/releases) and extract file contents inside the *client* folder of your PlasticSCM installation. Usually:
-
-    ```
-    C:\Program Files\PlasticSCM5\client
-    ```
-
-2. Run PlasticSCM, go to *Preferences* -> *Issue trackers*. You should see on the dropdown *GitHub Extension*.
+1. Run PlasticSCM, go to *Preferences* / *Issue trackers*. You should see on the dropdown *GitHub Extension*.
 
     ![PlasticSCM GitHub issues integration](_docs/basic-configuration.png)
 
     Select a **Working Mode** from the dropdown and configure the extension. For more information see **Extension Parameters** at the top of this file.
 
-3. Finally, when doing a check-in, you can link your PlasticSCM changeset with a Github Issue (if using **WorkingMode=TaskOnChangeset**, otherwise you'll do it via-branching):
+2. Before doing a check-in, you can link your PlasticSCM changeset with a Github Issue (if using **WorkingMode=TaskOnChangeset**, otherwise you can do it via-branching):
 
-![PlasticSCM GitHub issues link](_docs/changeset-link-task.png)
+   ![PlasticSCM GitHub issues link](_docs/changeset-link-task.png)
 
 
 ## Build
